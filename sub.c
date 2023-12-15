@@ -1,21 +1,18 @@
 #include "monty.h"
-
 /**
- * f_sub - subtraction
- * @head: stack head
- * @counter: line_number
- * Return: no return
+  *f_sub- sustration
+  *@head: stack head
+  *@counter: line_number
+  *Return: no return
  */
 void f_sub(stack_t **head, unsigned int counter)
 {
-	stack_t *current;
-	int result, nodes;
+	stack_t *aux;
+	int sus, nodes;
 
-	current = *head;
-
-	for (nodes = 0; current != NULL; nodes++)
-		current = current->next;
-
+	aux = *head;
+	for (nodes = 0; aux != NULL; nodes++)
+		aux = aux->next;
 	if (nodes < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
@@ -24,10 +21,9 @@ void f_sub(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-
-	current = *head;
-	result = current->next->n - current->n;
-	current->next->n = result;
-	*head = current->next;
-	free(current);
+	aux = *head;
+	sus = aux->next->n - aux->n;
+	aux->next->n = sus;
+	*head = aux->next;
+	free(aux);
 }
